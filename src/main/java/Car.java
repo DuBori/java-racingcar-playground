@@ -5,10 +5,14 @@ public class Car {
         this.name = name;
     }
 
-    public void go() {
+    public RacingResult go() {
+        if (stack.length() > 4) {
+            return new RacingResult(name, "우승");
+        }
         if (CarUtills.RandomNumber() > 3) {
             stack.append("-");
         }
+        return RacingResult.empty();
     }
 
     public String getName() {

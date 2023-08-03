@@ -56,6 +56,19 @@ class CarTest {
         });
     }
 
+    @Test
+    void 자동차_경주_게임_5글자_쌓이면이긴다(){
+        Car 빵빵이 = new Car("빵빵이");
+        for (int i = 0; i < 20; i++) {
+            RacingResult result = 빵빵이.go();
+            if (result.getMsg() != null && result.getMsg().equals("우승")) {
+                result.printRacingMsg();
+                break;
+            }
+        }
+
+    }
+
 
 
 
