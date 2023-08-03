@@ -4,8 +4,11 @@ public class Car {
     public Car(String name) {
         this.name = name;
     }
+
     public void go() {
-        stack.append("-");
+        if (CarUtills.RandomNumber() > 3) {
+            stack.append("-");
+        }
     }
 
     public String getName() {

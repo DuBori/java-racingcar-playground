@@ -1,4 +1,11 @@
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +31,34 @@ class CarTest {
     void 자동차_전진기능_테스트() {
         Car 빵빵이 = new Car("빵빵이");
         빵빵이.go();
-        System.out.println(빵빵이.print());
+        assertTrue("-".equals(빵빵이.getStack().toString()));
     }
+
+    @Test
+    @Disabled
+    void 자동차_이름_쉼표구분() {
+        String string = "빵빵이,빵빵삼,빵빵사";
+        List<Car> list = new ArrayList<>();
+        list.add(new Car("빵빵이"));
+        list.add(new Car("빵빵삼"));
+        list.add(new Car("빵빵사"));
+    } // 잘 안됐습니다.
+    @Test
+    @RepeatedTest(100)
+    void 랜덤함수_1_9까지() {
+        Random random = new Random();
+        int i = random.nextInt(9) + 1;
+        assertTrue(() -> {
+            if(0 < i  && i < 10){
+                return true;
+            }
+            return false;
+        });
+    }
+
+
+
+
+
     
 }
