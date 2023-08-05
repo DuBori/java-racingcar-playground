@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Play {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
+
     public Play() {
         Cars cars = new Cars(inputCar());
         cars.getCarsName();
@@ -16,9 +17,9 @@ public class Play {
     private void logic(Cars cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             cars.getCarList()
-                    .forEach(it -> it.go(random.nextInt(9)+1));
-            if(isFinsh(cars)){
-                System.out.println(checkWiner(cars)+"가 최종 우승했습니다.");
+                    .forEach(it -> it.go(random.nextInt(9) + 1));
+            if (isFinsh(cars)) {
+                System.out.println(checkWiner(cars) + "가 최종 우승했습니다.");
                 break;
             }
         }
@@ -28,7 +29,7 @@ public class Play {
         return cars.getCarList()
                 .stream()
                 .filter(it -> it.getStack().length() == 5)
-                .map(it->it.getName()+",").collect(Collectors.joining());
+                .map(it -> it.getName() + ",").collect(Collectors.joining());
     }
 
     private static boolean isFinsh(Cars cars) {

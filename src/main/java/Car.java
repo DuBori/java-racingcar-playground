@@ -2,6 +2,7 @@ import java.util.Objects;
 
 public class Car {
     public static final int MAX_LENGTH = 5;
+    public static final int END_SIZE = 5;
     private String name;
     private StringBuffer stack = new StringBuffer();
 
@@ -57,4 +58,7 @@ public class Car {
     }
 
 
+    public boolean isFinish() {
+        return stack.length() == END_SIZE;
+    }
 }
