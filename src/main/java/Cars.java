@@ -9,7 +9,11 @@ public class Cars {
         this.carList = carList;
     }
 
-    public List<Car> inputCar(String string) {
+    public Cars(String inputValue) {
+        this.carList = inputCar(inputValue);
+    }
+
+    public static List<Car> inputCar(String string) {
         String[] cars = string.split(",");
         List<Car> list = new ArrayList<>();
         for (String car : cars) {
@@ -17,6 +21,7 @@ public class Cars {
         }
         return list;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -29,5 +34,15 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(carList);
+    }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public void getCarsName() {
+        StringBuffer stringBuffer = new StringBuffer();
+        carList.forEach(it -> stringBuffer.append(it.getName() + ","));
+        System.out.println("stringBuffer = " + stringBuffer.toString());
     }
 }

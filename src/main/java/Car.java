@@ -14,15 +14,12 @@ public class Car {
         return name;
     }
 
-    public RacingResult go(int number) {
+    public void go(int number) {
         validateNumber(number);
-        if (stack.length() > 4) {
-            return new RacingResult(name, "우승");
-        }
         if (number > 3) {
             stack.append("-");
+            System.out.println(name + " : "+stack);
         }
-        return RacingResult.empty();
     }
 
     private void validateNumber(int number) {
