@@ -1,22 +1,34 @@
+import java.util.Objects;
+
 public class Car {
+    public static final int MAX_LENGTH = 5;
     private String name;
     private StringBuffer stack = new StringBuffer();
+
     public Car(String name) {
+        validate(name);
         this.name = name;
     }
 
-    public RacingResult go() {
+    public String getName() {
+        return name;
+    }
+
+    public RacingResult go(int number) {
+        validateNumber(number);
         if (stack.length() > 4) {
             return new RacingResult(name, "우승");
         }
-        if (CarUtills.RandomNumber() > 3) {
+        if (number > 3) {
             stack.append("-");
         }
         return RacingResult.empty();
     }
 
-    public String getName() {
-        return name;
+    private void validateNumber(int number) {
+        if (number < 0 || number > 9) {
+            throw new NumberFormatException("0 - 9 사이의 값을 넣어주세요.");
+        }
     }
 
     public StringBuffer getStack() {
@@ -26,4 +38,26 @@ public class Car {
     public String print() {
         return name + ":" + getStack();
     }
+
+    public static boolean validate(String name) {
+        if (name.length() > MAX_LENGTH) {
+            throw new NumberFormatException();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Objects.equals(getName(), car.getName()) && getStack().toString().equals(car.getStack().toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getStack().toString());
+    }
+
+
 }
